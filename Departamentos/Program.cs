@@ -1,4 +1,5 @@
 using Departamentos.Data;
+using Departamentos.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ builder.Services.AddEntityFrameworkSqlServer()
                 .AddDbContext<DepartamentoContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
 
                 );
-
+builder.Services.AddScoped<VendedorServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
